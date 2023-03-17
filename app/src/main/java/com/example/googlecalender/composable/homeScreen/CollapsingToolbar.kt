@@ -1,9 +1,8 @@
-package com.example.googlecalender.composable.HomeScreen
+package com.example.googlecalender.composable.homeScreen
 
 import android.annotation.SuppressLint
 import android.os.Build
 import android.util.Log
-import android.view.MotionEvent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
@@ -20,7 +19,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -30,12 +28,9 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.googlecalender.R
 import com.example.googlecalender.getFirstDayOfWeekOfMonth
 import com.example.googlecalender.utils.months
@@ -170,7 +165,6 @@ fun CreateCollapsingToolbar(toolbarData: ToolbarData, widthPixels: Float) {
                         reverseLayout = true,
                         modifier = Modifier
                             .fillParentMaxWidth()
-                            .background(Color.Cyan)
                     ) {
 
                         items(bufferCalenderPast) { item ->
@@ -192,7 +186,6 @@ fun CreateCollapsingToolbar(toolbarData: ToolbarData, widthPixels: Float) {
                         flingBehavior = rememberSnapFlingBehavior(lazyListState = listStateFuture),
                         modifier = Modifier
                             .fillParentMaxWidth()
-                            .background(Color.Green)
                     ) {
                         items(bufferCalenderFuture) { item ->
                             Column(

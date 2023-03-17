@@ -9,8 +9,15 @@ import android.util.DisplayMetrics
 import android.util.TypedValue
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import com.example.googlecalender.composable.HomeScreen.CreateCollapsingToolbar
-import com.example.googlecalender.composable.HomeScreen.ToolbarData
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.width
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import com.example.googlecalender.composable.homeScreen.AddNew
+import com.example.googlecalender.composable.homeScreen.CreateCollapsingToolbar
+import com.example.googlecalender.composable.homeScreen.ToolbarData
 import com.example.googlecalender.utils.months
 import com.example.googlecalender.utils.week
 import java.time.LocalDate
@@ -61,15 +68,20 @@ class MainActivity : AppCompatActivity() {
             val metrics = DisplayMetrics()
             windowManager.defaultDisplay.getMetrics(metrics)
 
-            CreateCollapsingToolbar(
-                toolbarData = ToolbarData(
-                    monthName = months[thisMonth - 1],
-                    totalDays = totalDaysOfMonth,
-                    currentDate = currentDate,
-                    daysToBeSkipped = left
-                ),
-                metrics.widthPixels.toPx
-            )
+            Box(modifier = Modifier.fillMaxSize()) {
+                CreateCollapsingToolbar(
+                    toolbarData = ToolbarData(
+                        monthName = months[thisMonth - 1],
+                        totalDays = totalDaysOfMonth,
+                        currentDate = currentDate,
+                        daysToBeSkipped = left
+                    ),
+                    metrics.widthPixels.toPx
+                )
+
+                AddNew()
+
+            }
 
         }
     }
